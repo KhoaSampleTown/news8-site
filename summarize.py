@@ -31,22 +31,36 @@ PROMPT_TMPL = (
     "Return JSON with keys: section, bullets (array of strings), takeaway (string)."
 )
 
-TOPICS = ["Fixedincome","Equity","Commodity","Cryptocurrency","Exchangerate","Interest rate"]
+TOPICS = {
+    "fixedincome": "fixedincome.json",
+    "equity": "equity.json",
+    "commodity": "commodity.json",
+    "cryptocurrency": "cryptocurrency.json",
+    "exchangerate": "exchangerate.json",
+    "interestrate": "interestrate.json"
+}
 
 def load_today_topic_files():
     date_str = datetime.utcnow().strftime('%Y-%m-%d')
     folder = os.path.join(DATA_DIR, date_str)
     files = {}
-    for t in TOPICS:
-        p = os.path.join(folder, f"{t}.json")
+    for topic, filename in TOPICS.items():
+        p = os.path.join(folder, filename)
         if os.path.exists(p):
-            files[t] = p
+            files[topic] = p
     return files
 
 def summarize_topic(topic, path):
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    items = data.get('items', [])[:80]
+    seen_titles = set()
+    deduped = []
+    for it in data.get('items', []):
+        title = it.get('title', '').strip().lower()
+        if title and title not in seen_titles:
+            deduped.append(it)
+            seen_titles.add(title)
+    items = deduped[:80]
     lite = [{"title": it['title'], "summary": it.get('summary',''), "url": it['link']} for it in items]
 
     prompt = PROMPT_TMPL.format(topic=topic, payload=json.dumps(lite, ensure_ascii=False))
@@ -59,11 +73,15 @@ def summarize_topic(topic, path):
         ]
     )
     txt = resp.choices[0].message.content
+    if txt.strip().startswith("```json"):
+        txt = txt.strip().removeprefix("```json").removesuffix("```").strip()
+
     try:
         obj = json.loads(txt)
     except Exception:
         obj = {"section": topic, "bullets": [txt], "takeaway": ""}
     return obj
+
 
 def main():
     files = load_today_topic_files()

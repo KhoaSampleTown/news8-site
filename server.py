@@ -2,6 +2,10 @@ from aiohttp import web
 import os, asyncio
 import collector, summarize
 
+from dotenv import load_dotenv
+load_dotenv(".env")
+
+
 app = web.Application()
 
 # --- admin refresh phải đăng ký TRƯỚC ---
@@ -29,7 +33,7 @@ app.router.add_get("/admin/refresh", refresh_handler)
 async def handle(request):
     path = request.match_info.get("path", "web/index.html")
     if path in ("", "/"): path = "web/index.html"
-    file_path = os.path.join("/app", path.lstrip("/"))
+    file_path = os.path.join(os.getcwd(), path.lstrip("/"))
     if not os.path.exists(file_path):
         return web.Response(status=404, text="Not found")
     return web.FileResponse(file_path)

@@ -5,21 +5,25 @@
       "count": 80,
       "path": "/data/2025-08-22/fixedincome.json"
     },
+    "exchangerate": {
+      "count": 1,
+      "path": "/data/2025-08-22/exchangerate.json"
+    },
     "equity": {
-      "count": 14,
+      "count": 17,
       "path": "/data/2025-08-22/equity.json"
     },
-    "cryptocurrency": {
-      "count": 5,
-      "path": "/data/2025-08-22/cryptocurrency.json"
+    "interestrate": {
+      "count": 4,
+      "path": "/data/2025-08-22/interestrate.json"
     },
     "commodity": {
       "count": 3,
       "path": "/data/2025-08-22/commodity.json"
     },
-    "interestrate": {
-      "count": 3,
-      "path": "/data/2025-08-22/interestrate.json"
+    "cryptocurrency": {
+      "count": 5,
+      "path": "/data/2025-08-22/cryptocurrency.json"
     }
   },
   "summaries": {
