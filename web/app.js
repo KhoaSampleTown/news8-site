@@ -11,7 +11,7 @@ async function main(){
     const sum = await j(idx.summaries.path);
     const order = ["fixedincome","equity","commodity","cryptocurrency","exchangerate","interestrate"];
     for (const t of order){
-      const sec = sum.sections[t];
+      const sec = sum[t];
       if (!sec) continue;
       const wrap = document.createElement('section');
       wrap.className = 'topic';
