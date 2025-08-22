@@ -6,3 +6,5 @@ openai>=1.40.0
 APScheduler
 aiohttp
 python-dotenv
+APScheduler
+pytz
