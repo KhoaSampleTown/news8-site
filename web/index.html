@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily Markets Brief – 6 Sections</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  <style>
+    body { max-width: 1100px; margin: 2rem auto; }
+    .topic { margin-top: 1.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 12px; }
+    .card { padding: 12px; border: 1px solid #e5e7eb; border-radius: 12px; }
+    .title { font-weight: 600; }
+    .meta { font-size: 12px; opacity: .7; }
+    .bullets li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Daily Markets Brief</h1>
+    <p id="date"></p>
+  </header>
+
+  <section id="summaries"></section>
+
+  <hr/>
+  <section id="topics"></section>
+
+  <script src="app.js"></script>
+</body>
+</html>

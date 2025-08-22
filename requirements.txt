@@ -1,0 +1,6 @@
+feedparser
+requests
+python-dateutil
+pydantic<3
+openai>=1.40.0
+APScheduler

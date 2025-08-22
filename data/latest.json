@@ -1,0 +1,28 @@
+{
+  "date": "2025-08-22",
+  "topics": {
+    "fixedincome": {
+      "count": 80,
+      "path": "/data/2025-08-22/fixedincome.json"
+    },
+    "equity": {
+      "count": 14,
+      "path": "/data/2025-08-22/equity.json"
+    },
+    "cryptocurrency": {
+      "count": 5,
+      "path": "/data/2025-08-22/cryptocurrency.json"
+    },
+    "commodity": {
+      "count": 3,
+      "path": "/data/2025-08-22/commodity.json"
+    },
+    "interestrate": {
+      "count": 3,
+      "path": "/data/2025-08-22/interestrate.json"
+    }
+  },
+  "summaries": {
+    "path": "/data/2025-08-22/summaries.json"
+  }
+}
