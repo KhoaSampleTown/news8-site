@@ -8,4 +8,4 @@ ENV OUT_DIR=/app/data
 RUN python collector.py || true
 RUN OPENAI_API_KEY=dummy python summarize.py || true
 EXPOSE 8080
-CMD ["python","start.py"]
+CMD ["python","server.py"]

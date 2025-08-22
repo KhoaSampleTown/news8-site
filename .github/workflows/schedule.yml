@@ -1,0 +1,12 @@
+name: Daily refresh 08:00 GMT+7
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 01:00 UTC = 08:00 VN
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call refresh endpoint
+        run: |
+          curl -fsS "https://<app-name>.fly.dev/admin/refresh?token=${{ secrets.REFRESH_TOKEN }}"
